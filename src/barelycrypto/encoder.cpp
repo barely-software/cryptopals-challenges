@@ -20,6 +20,10 @@ void Encoder::SetInputFromHexString(string input) {
     }
 }
 
+void Encoder::SetInputFromBytes(vector<uint8_t> input) {
+    _bytes = input;
+}
+
 string Encoder::GetOutputAsHexString() {
     string result = "";
     for(auto &b : _bytes) 

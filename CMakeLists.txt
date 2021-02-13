@@ -16,3 +16,6 @@ install(FILES ${PUBLIC_HEADERS} DESTINATION include)
 
 add_executable(set1_challenge1 src/challenges/set1/challenge1.cpp)
 target_link_libraries(set1_challenge1 barelycrypto)
+
+add_executable(set1_challenge2 src/challenges/set1/challenge2.cpp)
+target_link_libraries(set1_challenge2 barelycrypto)

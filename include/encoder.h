@@ -51,6 +51,7 @@ static std::map<uint8_t, char> bytes_to_base64 = {
 class Encoder {
 public:
     void SetInputFromHexString(std::string input);
+    void SetInputFromBytes(std::vector<uint8_t> input);
     std::string GetOutputAsHexString();
     std::string GetOutputAsASCII();
     std::string GetOutputAsBase64();
