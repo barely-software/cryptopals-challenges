@@ -4,6 +4,10 @@
 
 #include "encoder.h"
 
+#include "hex_to_bytes.h"
+#include "bytes_to_hex.h"
+#include "bytes_to_base64.h"
+
 using namespace std;
 
 void Encoder::SetInputFromHexString(string input) {

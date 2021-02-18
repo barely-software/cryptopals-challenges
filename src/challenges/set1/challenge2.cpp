@@ -46,6 +46,12 @@ int main(int argc, char* argv[]) {
     else 
         cout << "failure..." << endl;
 
+    auto x = 0xcf;
+    auto y = 0xbd;
+
+    cout << "x: " << x << " y: " << y << endl;
+    cout << "x^y" << (x^y) << " (x^y)^y" << ((x^y)^y) << endl; 
+
     return 0;
 }
 
