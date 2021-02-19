@@ -1,5 +1,6 @@
 #include <map>
 #include <string>
+#include <cmath>
 #include "character_frequencies.h"
 
 using namespace std;
@@ -22,16 +23,19 @@ map<uint8_t,float> compute_frequencies(const string& input) {
         auto lc = asciitolower(c);
 
         if(lc >= 'a' && lc <= 'z') {
-            result[asciitolower(c)] += 1;
+            result[lc] += 1;
+            count++;
+        }
+        else {
+            result[c] += 1;
             count++;
         }
     }
 
-
-    for(char c='a'; c<='z'; c++) {
-        result[c] /= count;
+    for(uint8_t i = 0 ; i < 256; i++) {
+        result[i] /= count;
+        if(i==255) break;
     }
-
 
     return result;
 }
@@ -39,8 +43,10 @@ map<uint8_t,float> compute_frequencies(const string& input) {
 
 float compare_frequencies(map<uint8_t, float> m1, map<uint8_t, float> m2) {
     auto diff = 0.0f;
-    for(char c ='a'; c<='z'; c++) {
-        diff += fabs(m1[c]-m2[c]);
+
+    for(uint8_t i=0; i<256; i++) {
+        diff += fabs(m1[i]-m2[i]);
+        if(i==255) break;
     }
 
     return diff;
