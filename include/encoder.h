@@ -7,6 +7,7 @@
 
 class Encoder {
 public:
+    void SetInputFromString(std::string input);
     void SetInputFromHexString(std::string input);
     void SetInputFromBytes(std::vector<uint8_t> input);
     std::string GetOutputAsHexString();

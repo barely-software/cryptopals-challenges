@@ -10,6 +10,12 @@
 
 using namespace std;
 
+void Encoder::SetInputFromString(string input) {
+    _bytes.clear();
+    for(auto c : input) {
+        _bytes.emplace_back(c);
+    }
+}
 void Encoder::SetInputFromHexString(string input) {
     if((input.size()%2) != 0 ) {
         input = '0' + input;

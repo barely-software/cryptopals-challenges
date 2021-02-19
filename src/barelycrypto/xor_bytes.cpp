@@ -19,7 +19,7 @@ vector<uint8_t> XorBytes(vector<uint8_t> bytes1, vector<uint8_t> bytes2) {
 
     for(int i=0; i<bytes1.size(); i++) {
         auto b1 = bytes1.at(i);
-        auto b2 = bytes2.at(i);
+        auto b2 = bytes2.at(i % bytes2.size());
         result.emplace_back(b1 ^ b2);
     }
 
