@@ -23,11 +23,6 @@ int main(int argc, char *argv[])
     e.SetInputFromString(input);
     auto inBytes = e.GetBytes();
 
-    for(auto c: inBytes) 
-      cout << "." << c;
-
-    cout << endl;
-    
     e.SetInputFromString(key);
     auto keyBytes = e.GetBytes();
 

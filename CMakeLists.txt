@@ -26,5 +26,8 @@ target_link_libraries(set1_challenge3 barelycrypto)
 add_executable(set1_challenge4 src/challenges/set1/challenge4.cpp)
 target_link_libraries(set1_challenge4 barelycrypto)
 
+add_executable(set1_challenge6 src/challenges/set1/challenge6.cpp)
+target_link_libraries(set1_challenge6 barelycrypto)
+
 add_executable(set1_challenge5 src/challenges/set1/challenge5.cpp)
 target_link_libraries(set1_challenge5 barelycrypto)

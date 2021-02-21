@@ -16,6 +16,49 @@ void Encoder::SetInputFromString(string input) {
         _bytes.emplace_back(c);
     }
 }
+
+void Encoder::SetInputFromBase64String(string input) {
+    _bytes.clear();
+
+    for(int i = 0; i < input.size()/4; i++) {
+        const auto& c1 = base64_to_bytes[input.at(4*i)];
+        const auto& c2 = base64_to_bytes[input.at(4*i+1)];
+        const auto& c3 = base64_to_bytes[input.at(4*i+2)];
+        const auto& c4 = base64_to_bytes[input.at(4*i+3)];
+        
+        uint8_t b1 = ((c1 << 2) & 0b11111100 );
+        
+        // if c2 is padding... add b1 as is, and break
+        if(c2 == 0x40) {
+            _bytes.emplace_back(b1);
+            break;
+        }
+        b1 |= ((c2 >> 4) & 0b00000011 );
+        _bytes.emplace_back(b1);
+
+
+        uint8_t b2 = ((c2 << 4) & 0b11110000 ); 
+        if(c3 == 0x40) {
+            _bytes.emplace_back(b2);
+            break;
+        }
+        
+        b2 |= ((c3 >> 2) & 0b00001111 );
+        _bytes.emplace_back(b2);
+
+
+        uint8_t b3 = ((c3 << 6) & 0b11000000 );
+        if(c4 == 0x40) {
+            _bytes.emplace_back(b3);
+            break;
+        }
+
+         b3 |= ( c4 & 0b00111111 );
+         _bytes.emplace_back(b3);
+
+    }
+}
+
 void Encoder::SetInputFromHexString(string input) {
     if((input.size()%2) != 0 ) {
         input = '0' + input;
